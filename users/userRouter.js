@@ -114,10 +114,28 @@ function validateUserId(req, res, next) {
 
 function validateUser(req, res, next) {
   // do your magic!
+  const reqBody = req.body;
+  const { name } = req.body;
+  if (!reqBody || reqBody === {}) {
+    res.status(400).json({ message: "missing user data" })
+  } else if (!name || name === undefined) {
+    res.status(400).json({ message: "missing required name field" })
+  } else {
+    next();
+  }
 }
 
 function validatePost(req, res, next) {
   // do your magic!
+  const reqBody = req.body;
+  const { text } = req.body;
+  if (!reqBody || reqBody === {}) {
+    res.status(400).json({ message: "missing post data" })
+  } else if (!text || text === undefined) {
+    res.status(400).json({ message: "missing required text field" })
+  } else {
+    next();
+  }
 }
 
 module.exports = router;
