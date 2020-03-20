@@ -29,6 +29,8 @@ function logger(req, res, next) {
   next();
 }
 
+
+
 function errorHandler(error, req, res, next) {
   console.log('error: ', error.message);
   res.status(400).json({ message: error.message });
